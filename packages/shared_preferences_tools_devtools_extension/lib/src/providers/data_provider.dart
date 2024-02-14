@@ -1,6 +1,7 @@
 import 'package:devtools_app_shared/service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:shared_preferences_tools/shared_preferences_tools.dart';
+// ignore: implementation_imports
+import 'package:shared_preferences_tools/src/models/shared_preferences_data.dart';
 import 'package:vm_service/vm_service.dart';
 
 import 'shared_preferences_tools_eval_provider.dart';

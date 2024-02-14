@@ -17,12 +17,24 @@ class SharedPreferencesToolsDebug {
     }
   }
 
+  /// Returns a set of all keys in the shared preferences.
+  /// DO NOT USE THIS GETTER IN PRODUCTION.
+  /// This is only used by the devtools extension.
+  @protected
   static Set<String> get keys => _prefs.getKeys();
 
+  /// Returns the data for the given key.
+  /// DO NOT USE THIS METHOD IN PRODUCTION.
+  /// This is only used by the devtools extension.
+  @protected
   static Map<String, dynamic> getData(String key) {
     return SharedPreferencesData(_prefs.get(key)).toJson();
   }
 
+  /// Changes the value for the given key.
+  /// DO NOT USE THIS METHOD IN PRODUCTION.
+  /// This is only used by the devtools extension.
+  @protected
   static void changeValue({
     required String key,
     required String value,

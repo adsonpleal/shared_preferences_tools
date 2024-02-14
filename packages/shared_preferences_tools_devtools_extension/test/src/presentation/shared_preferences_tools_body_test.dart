@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:shared_preferences_tools/shared_preferences_tools.dart';
+import 'package:shared_preferences_tools/src/models/shared_preferences_data.dart';
 import 'package:shared_preferences_tools_devtools_extension/src/presentation/shared_preferences_tools_body.dart';
 import 'package:shared_preferences_tools_devtools_extension/src/providers/change_value_provider.dart';
 import 'package:shared_preferences_tools_devtools_extension/src/providers/data_provider.dart';
