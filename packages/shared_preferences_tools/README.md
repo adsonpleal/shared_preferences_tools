@@ -43,7 +43,7 @@ Future<void> main() async {
 ## Contributing to this package
 
 1. Run the example project (or any project that includes the `await SharedPreferencesToolsDebug.init();` call) and copy its debug service URL.
-2. Run the `shared_preferences_tools_devtools_extension` project via [VSCode](../../.vscode/launch.json) or by running the following command:
+2. Run the `shared_preferences_tools_devtools_extension` project via [VSCode](https://github.com/adsonpleal/shared_preferences_tools/blob/main/.vscode/launch.json) or by running the following command:
 
 ```shell
 flutter run -d chrome --dart-define=use_simulated_environment=true
