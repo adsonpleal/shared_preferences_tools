@@ -19,7 +19,7 @@ It supports all data types available in SharedPreferences:
 
 | Selecting a key | Editing a value |
 |-----------------|-----------------|
-| <img src='../../resources/tool_screenshot_1.png'/> | <img src='../../resources/tool_screenshot_2.png'/> |
+| <img src='https://raw.githubusercontent.com/adsonpleal/shared_preferences_tools/main/resources/tool_screenshot_1.png'/> | <img src='https://raw.githubusercontent.com/adsonpleal/shared_preferences_tools/main/resources/tool_screenshot_2.png'/> |
 
 ## Getting started
 
