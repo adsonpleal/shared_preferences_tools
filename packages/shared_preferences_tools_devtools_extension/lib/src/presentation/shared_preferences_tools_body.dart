@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:shared_preferences_tools/shared_preferences_tools.dart';
+// ignore: implementation_imports
+import 'package:shared_preferences_tools/src/models/shared_preferences_data.dart';
 
 import '../providers/change_value_provider.dart';
 import '../providers/data_provider.dart';
@@ -131,7 +132,8 @@ class _DataPanel extends HookConsumerWidget {
                         },
                         child: const Text('Cancel'),
                       ),
-                      if (valueHolder.value != null && valueHolder.value != state.data.value) ...[
+                      if (valueHolder.value != null &&
+                          valueHolder.value != state.data.value) ...[
                         const SizedBox(width: defaultSpacing),
                         TextButton(
                           onPressed: () async {
@@ -375,7 +377,9 @@ class _KeysPanel extends HookConsumerWidget {
                           ),
                         ),
                         onChanged: (value) {
-                          ref.read(_keysNotifierProvider.notifier).filter(value);
+                          ref
+                              .read(_keysNotifierProvider.notifier)
+                              .filter(value);
                         },
                       ),
                     ),
@@ -469,7 +473,8 @@ class _KeyItem extends HookConsumerWidget {
       ),
     );
     final colorScheme = Theme.of(context).colorScheme;
-    final backgroundColor = isSelected ? colorScheme.selectedRowBackgroundColor : null;
+    final backgroundColor =
+        isSelected ? colorScheme.selectedRowBackgroundColor : null;
 
     return InkWell(
       onTap: () {

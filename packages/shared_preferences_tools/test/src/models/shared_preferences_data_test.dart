@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shared_preferences_tools/shared_preferences_tools.dart';
+import 'package:shared_preferences_tools/src/models/shared_preferences_data.dart';
 
 void main() {
   group('SharedPreferencesDataType', () {
