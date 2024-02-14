@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Simulated devtools environment",
+      "cwd": "packages/shared_preferences_tools_devtools_extension",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define=use_simulated_environment=true"
+      ],
+    },
+  ]
+}

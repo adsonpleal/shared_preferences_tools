@@ -1,0 +1,34 @@
+name: shared_preferences_tools_devtools_extension
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0-91.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  devtools_extensions: ^0.0.10
+  devtools_app_shared: ^0.0.5
+  riverpod_annotation: ^2.3.4
+  riverpod: ^2.5.0
+  hooks_riverpod: ^2.4.10
+  flutter_hooks: ^0.20.5
+  vm_service: ^13.0.0
+  shared_preferences_tools: 
+    path: ../shared_preferences_tools
+
+dev_dependencies:
+  flutter_driver:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  riverpod_generator: ^2.3.11
+  build_runner: ^2.4.8
+  mockito: ^5.4.4
+
+flutter:
+  uses-material-design: true
