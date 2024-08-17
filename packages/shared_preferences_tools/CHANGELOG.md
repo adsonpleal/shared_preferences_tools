@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Adds support to the new SharedPreferencesAsync API
+
 ## 1.0.3
 
 * Improve pub.dev scores
