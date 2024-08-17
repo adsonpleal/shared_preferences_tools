@@ -1,44 +1,40 @@
-import 'dart:convert';
+// ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shared_preferences_tools/shared_preferences_tools.dart';
 
 Future<void> _setInitialValues() async {
-  final prefs = await SharedPreferences.getInstance();
+  WidgetsFlutterBinding.ensureInitialized();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
 
   if (prefs.getKeys().isNotEmpty) {
     return;
   }
 
-  await Future.wait([
+  final SharedPreferencesAsync asyncPrefs = SharedPreferencesAsync();
+
+  await <Future<void>>[
     prefs.setString('someStringKey', 'Hello, world!'),
-    prefs.setString(
-      'someSerializedMapKey',
-      jsonEncode(
-        {
-          'key1': 'value1',
-          'key2': 'value2',
-          'intKey1': 42,
-          'doubleKey1': 3.14,
-          'boolKey1': true,
-        },
-      ),
-    ),
     prefs.setInt('someIntKey', 42),
     prefs.setDouble('someDoubleKey', 3.14),
     prefs.setBool('someBoolKey', true),
     prefs.setStringList(
       'someStringListKey',
-      ['Hello World 1', 'Hello World 2'],
+      <String>['Hello World 1', 'Hello World 2'],
     ),
-  ]);
+    asyncPrefs.setString('asyncStringKey', 'Hello, async world!'),
+    asyncPrefs.setInt('asyncIntKey', 24),
+    asyncPrefs.setDouble('asyncDoubleKey', 1.41),
+    asyncPrefs.setBool('asyncBoolKey', false),
+    asyncPrefs.setStringList(
+      'asyncStringListKey',
+      <String>['Hello Async World 1', 'Hello Async World 2'],
+    ),
+  ].wait;
 }
 
 Future<void> main() async {
-  await SharedPreferencesToolsDebug.init();
-
   await _setInitialValues();
 
   runApp(const SharedPreferencesToolsExample());
@@ -67,8 +63,16 @@ class _Content extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prefs = useFuture(SharedPreferences.getInstance()).data;
-    final loadingState = useState(false);
+    final SharedPreferences? prefs =
+        useFuture(SharedPreferences.getInstance()).data;
+    final SharedPreferencesAsync asyncPrefs =
+        useMemoized(() => SharedPreferencesAsync());
+    final ValueNotifier<bool> loadingState = useState(false);
+    final asyncStringKey = useFuture(asyncPrefs.getString('asyncStringKey')).data;
+    final asyncIntKey = useFuture(asyncPrefs.getInt('asyncIntKey')).data;
+    final asyncDoubleKey = useFuture(asyncPrefs.getDouble('asyncDoubleKey')).data;
+    final asyncBoolKey = useFuture(asyncPrefs.getBool('asyncBoolKey')).data;
+    final asyncStringListKey = useFuture(asyncPrefs.getStringList('asyncStringListKey')).data;
 
     if (prefs == null || loadingState.value) {
       return const Center(
@@ -80,15 +84,11 @@ class _Content extends HookWidget {
       child: ListView(
         shrinkWrap: true,
         padding: const EdgeInsets.all(16),
-        children: [
+        children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: <Widget>[
               Text('someStringKey: ${prefs.getString('someStringKey')}'),
-              const SizedBox(height: 8),
-              Text(
-                'someSerializedMapKey: ${prefs.getString('someSerializedMapKey')}',
-              ),
               const SizedBox(height: 8),
               Text('someIntKey: ${prefs.getInt('someIntKey')}'),
               const SizedBox(height: 8),
@@ -99,6 +99,16 @@ class _Content extends HookWidget {
               Text(
                 'someStringListKey: ${prefs.getStringList('someStringListKey')}',
               ),
+              const SizedBox(height: 8),
+              Text('asyncStringKey: $asyncStringKey'),
+              const SizedBox(height: 8),
+              Text('asyncIntKey: $asyncIntKey'),
+              const SizedBox(height: 8),
+              Text('asyncDoubleKey: $asyncDoubleKey'),
+              const SizedBox(height: 8),
+              Text('asyncBoolKey: $asyncBoolKey'),
+              const SizedBox(height: 8),
+              Text('asyncStringListKey: $asyncStringListKey'),
             ],
           ),
         ],

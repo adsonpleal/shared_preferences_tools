@@ -4,18 +4,17 @@ A [DevTools extension](https://pub.dev/packages/devtools_extensions) for Flutter
 
 This package adds a new tool to Flutter's DevTools, utilizing the new `devtools_extensions` framework. With this tool, you can:
 
-- List all keys stored in your app's SharedPreferences.
+- List all keys stored in your app's `SharedPreferences`.
 - Search for specific keys.
-- Edit values directly, with changes reflected in your app instantly.
+- Edit or remove values directly, with changes reflected in your app instantly.
 
-It supports all data types available in SharedPreferences:
+It supports all data types available in `SharedPreferences`:
 
-- String
-- int
-- double
-- bool
-- List<String>
-- noValue (this action removes the key)
+- `String`
+- `int`
+- `double`
+- `bool`
+- `List<String>`
 
 | Selecting a key | Editing a value |
 |-----------------|-----------------|
@@ -29,20 +28,11 @@ To add this package to your project, run:
 flutter pub add shared_preferences_tools
 ```
 
-Initialize the package before starting your app:
-
-```dart
-Future<void> main() async {
-  await SharedPreferencesToolsDebug.init();
-  runApp(const YourApp());
-}
-```
-
->Note: The `init` function has no effect in release builds. Dart's tree shaking ensures that unused functions in the `SharedPreferencesToolsDebug` class are removed. This guarantees that the package will not impact your production app's performance.
+That’s it! Now you just need to open your DevTools and use the SharedPreferences tool!
 
 ## Contributing to this package
 
-1. Run the example project (or any project that includes the `await SharedPreferencesToolsDebug.init();` call) and copy its debug service URL.
+1. Run the example project (or any project that depends on shared_preferences_tools) and copy its debug service URL.
 2. Run the `shared_preferences_tools_devtools_extension` project via [VSCode](https://github.com/adsonpleal/shared_preferences_tools/blob/main/.vscode/launch.json) or by running the following command:
 
 ```shell

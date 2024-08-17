@@ -1,6 +1,6 @@
 name: shared_preferences_tools
 description: "DevTools extension for Flutter: Manage SharedPreferences efficiently. Edit, search, and view keys."
-version: 1.0.3
+version: 1.1.0
 homepage: https://github.com/adsonpleal/shared_preferences_tools
 
 environment:
@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: ^2.2.2
+  # requiring 2.3.0 version due to the new SharedPreferencesAsync API
+  shared_preferences: '>=2.3.0'
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
