@@ -1,3 +1,9 @@
+# Discontinuation Notice
+
+This package has been discontinued. It has been merged into [flutter/packages/shared_preferences](https://github.com/flutter/packages/pull/6749). Starting from shared_preferences `2.5.0`, this package is no longer needed, as its functionality is now included in the main package. To continue using the tool, please update your shared_preferences version to `>=2.5.0`.
+
+## Description
+
 A [DevTools extension](https://pub.dev/packages/devtools_extensions) for Flutter's [shared_preferences](https://pub.dev/packages/shared_preferences) package.
 
 ## Features
