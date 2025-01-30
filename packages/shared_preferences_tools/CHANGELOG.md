@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Adds discontinuation notice
+
 ## 1.1.0
 
 * Adds support to the new SharedPreferencesAsync API
